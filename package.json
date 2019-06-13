@@ -1,0 +1,44 @@
+{
+  "name": "svelte-hash-router",
+  "description": "Svelte Hash Router",
+  "keywords": [
+    "hash",
+    "router",
+    "spa",
+    "svelte"
+  ],
+  "repository": "github:pynnl/svelte-hash-router",
+  "license": "MIT",
+  "author": "pynnl",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "run-p dev:rollup",
+    "dev:reload": "reload -d dev/public",
+    "dev:rollup": "rollup -w -c"
+  },
+  "dependencies": {
+    "svelte": "^3.5.1",
+    "url-pattern": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-svelte3": "^1.2.3",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.14.6",
+    "rollup-plugin-browsersync": "^1.0.0",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-svelte": "^5.1.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-order": "^3.0.0"
+  },
+  "peerDependencies": {
+    "svelte": "^3.5.1"
+  }
+}

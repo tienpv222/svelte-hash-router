@@ -1,0 +1,20 @@
+env:
+  browser: true
+  es6: true
+extends: standard
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - svelte3
+rules:
+  curly: [error, multi-or-nest, consistent]
+  no-return-assign: off
+  padded-blocks: off
+  indent: off
+  
+  # svelte3 caveat
+  import/first: off
