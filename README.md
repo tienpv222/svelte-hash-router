@@ -63,7 +63,7 @@ Then just simply use `Router` for each levels. The parent components won't be re
 <Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
 ```
 
-Each nested level consumes a `Router`. They only render neccessary routes once, so you can freely use them without worrying that will break your app.
+Each nested level consumes a `Router`. Once all `Router` are consumed, the rest will have no effect.
 ```svelte
 <!-- Layout.svelte -->
 <p>A social networking</p>
