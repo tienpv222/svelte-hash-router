@@ -85,14 +85,14 @@ route.set({
 export default new Router({ target: document.body })
 ```
 
-An object of options can be passed. All properties starting with `$$` will be treated as data, the rest will be seen as nested routes. All data are saved as none-enumerable. `$$component` is a reserved data.
+An object of options can be passed. All properties starting with `$$` will be treated as options, the rest will be seen as nested routes. All options are saved as none-enumerable. `$$component` is a reserved option.
 ```javascript
 {
   '/home': Home,
   '/about': {
     $$component: About,
     $$name: 'About me',
-    $$customData: '',
+    $$customOption: '',
     '/biography': Biography,
     '/hobbies': Hobbies 
   }
@@ -187,7 +187,7 @@ Redirect routes by using a string instead of a Svelte component, or if passing o
 ```
 
 ## The `routes` store
-After the first schema setup, `routes` becomes readonly. The following reserved properties are added:
+After the first schema setup, `routes` becomes readonly. The following reserved properties are added for each route:
 
 - `$$pathname` the exact path as in schema define
 - `$$href` full path including `#` at the beginning
@@ -216,8 +216,12 @@ $: links = Object.values($routes['/books']['/comedy'])
 </style>
 ```
 
-The store `active` contains the current active route. If you use nested routes and want to check if a parent route has an active child route, use `matches`. It includes all the parents of the active route and itself.
+The store `active` is current active route. If you use nested routes and want to check if a parent route has an active child route, use the store `matches`. It is an array including all the parents of the active route and itself.
 ```svelte
+<script>
+import { matches } from 'svelte-hash-router'
+</script>
+
 <a class:active={$matches.includes(route)}></a>
 ```
 
