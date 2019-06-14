@@ -3,26 +3,24 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import browsersync from 'rollup-plugin-browsersync'
 
-let production = !process.env.ROLLUP_WATCH
-
 export default {
-  input: 'docs/src/index.js',
+  input: 'test/src/index.js',
   output: {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'docs/bundle.js'
+    file: 'test/bundle.js'
   },
   plugins: [
     svelte({
-      dev: !production,
-      css: css => css.write('docs/bundle.css')
+      dev: true,
+      css: css => css.write('test/bundle.css')
     }),
     nodeResolve(),
     commonjs(),
-    production || browsersync({
+    browsersync({
       server: 'docs',
-      watch: !production,
+      watch: true,
       ignore: ['docs/src']
     })
   ]
