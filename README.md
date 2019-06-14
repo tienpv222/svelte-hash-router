@@ -110,7 +110,7 @@ $params._ === '123' // not catch query
 ```
 
 ### url-pattern
-This library use [url-pattern](https://github.com/snd/url-pattern), check it out for more syntaxes.
+This library uses [url-pattern](https://github.com/snd/url-pattern), check it out for more syntaxes.
 
 ## Nested routes
 ```javascript
@@ -121,8 +121,8 @@ This library use [url-pattern](https://github.com/snd/url-pattern), check it out
     'home': Home,
     'networking': {
       $$component: Layout,
-      'github': Github,
-      'facebook': Facebook
+      '/github': Github,
+      '/facebook': Facebook
     }
   },
   '*': NotFound
