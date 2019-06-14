@@ -20,7 +20,7 @@ export default {
     }),
     nodeResolve(),
     commonjs(),
-    browsersync({
+    production || browsersync({
       server: 'docs',
       watch: !production,
       ignore: ['docs/src']

@@ -12,8 +12,8 @@
   "author": "pynnl",
   "main": "src/index.js",
   "scripts": {
-    "dev": "run-p dev:rollup",
-    "dev:reload": "reload -d dev/public",
+    "build": "rollup -c",
+    "dev": "npm run dev:rollup",
     "dev:rollup": "rollup -w -c"
   },
   "dependencies": {
