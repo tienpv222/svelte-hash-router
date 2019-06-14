@@ -72,6 +72,24 @@ Each nested level consumes a `Router`. Once all `Router` are consumed, the rest 
 <Router/> <!-- same -->
 ```
 
+You can also omit `$$component`.
+```javascript
+// schema
+{
+  '/': {
+    'home': Home,
+    'about': About
+  }
+}
+
+// will act the same as
+{
+  '/home': Home,
+  '/about': About
+}
+```
+`/` in the first schema will consume the same amount of `Router` as the second one. The difference is in the first schema, it is an individual route, has its own data and can be looped for children routes when needed. See [`stores`](#the-routes-store).
+
 ## Schema
 Root paths must start with a `/` or if using wildcard, `*`.
 ```javascript
@@ -97,33 +115,6 @@ An object of options can be passed. All properties starting with `$$` will be tr
     '/hobbies': Hobbies 
   }
 }
-```
-
-### Omit `$$component`
-The component can be omitted, but the route won't be rendered when it is active.
-```javascript
-{ '/this-route-will-not-be-rendered': null }
-```
-
-Nested routes.
-```javascript
-// schema
-{
-  '/': {
-    'home': Home,
-    'about': About
-  }
-}
-
-// will consume the same amount of <Router> as
-{
-  '/home': Home,
-  '/about': About
-}
-
-// except that '/' in the first schema is an individual
-// route, have its own data and can be looped for
-// children routes when needed
 ```
 
 ### Params
