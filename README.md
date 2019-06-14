@@ -54,12 +54,13 @@ Then just simply use `Router` for each levels. The parent components won't be re
 ```svelte
 <!-- MainLayout.svelte -->
 <div id='header'></div>
-<Router/>
+
+<Router/> <!-- will match '/home' and '/networking' -->
 <div id='footer'></div>
 
 <!-- Layout.svelte -->
 <p>A social networking</p>
-<Router/>
+<Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
 ```
 
 Each nested level consumes a `Router`. They only render neccessary routes once, so you can freely use them without worrying that will break your app.
@@ -195,6 +196,7 @@ After the first schema setup, `routes` becomes readonly. The following reserved 
 
 Since they are __*non-enumarable*__, you can easily loop for just nested routes when needed.
 ```svelte
+<!-- Navigator.svelte -->
 <script>
 import { routes, active } from 'svelte-hash-router'
 
