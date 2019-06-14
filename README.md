@@ -115,7 +115,7 @@ Nested routes.
   }
 }
 
-// will consume the as amount of <Router> as
+// will consume the same amount of <Router> as
 {
   '/home': Home,
   '/about': About
