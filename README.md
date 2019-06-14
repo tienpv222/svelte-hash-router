@@ -88,7 +88,7 @@ You can also omit `$$component`.
   '/about': About
 }
 ```
-`/` in the first schema will consume the same amount of `Router` as the second one. The difference is in the first schema, it is an individual route, has its own data and can be looped for children routes when needed. See [`stores`](#the-routes-store).
+`/` in the first schema will consume the same amount of `Router` as the second one. The difference is in the first schema, it is an individual route, has its own data and can be looped for children routes when needed. See [`routes`](#the-routes-store).
 
 ## Schema
 Root paths must start with a `/` or if using wildcard, `*`.
