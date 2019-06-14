@@ -52,7 +52,7 @@ The component can be omitted, but the route won't be rendered.
 { '/this-route-will-not-be-rendered': null }
 ```
 
-An object of options can be passed. All properties starting with `$$` will be treated as data, the rest will be seen as nested routes.
+An object of options can be passed. All properties starting with `$$` will be treated as data, the rest will be seen as nested routes. All data are none-enumerable.
 ```javascript
 {
   '/home': Home,
@@ -65,8 +65,6 @@ An object of options can be passed. All properties starting with `$$` will be tr
   }
 }
 ```
-
-Custom data will be overrided with similar named internal data.
 
 ### Params
 Get params of current route with the params store.
@@ -130,12 +128,12 @@ This library uses [url-pattern](https://github.com/snd/url-pattern), check it ou
 ```
 
 ```svelte
-<!-- MainLayout -->
+<!-- MainLayout.svelte -->
 <div id='header'></div>
 <Router/>
 <div id='footer'></div>
 
-<!-- Layout -->
+<!-- Layout.svelte -->
 <p>A social networking</p>
 <Router/>
 ```
@@ -184,6 +182,8 @@ After the first schema setup, `routes` becomes readonly. The following __*non-en
 - `$$href` full path including `#` at the beginning
 - `$$stringify` generate string from params. Check out [url-pattern stringify](https://github.com/snd/url-pattern#stringify-patterns)
 - `$$pattern` url-pattern object
+
+They will override any custom data with the same names.
 
 Example of use:
 ```svelte
