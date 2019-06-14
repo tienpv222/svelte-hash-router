@@ -1,5 +1,6 @@
 {
   "name": "svelte-hash-router",
+  "version": "0.0.0",
   "description": "Svelte Hash Router",
   "keywords": [
     "hash",
@@ -17,7 +18,6 @@
     "dev:rollup": "rollup -w -c"
   },
   "dependencies": {
-    "svelte": "^3.5.1",
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
