@@ -1,7 +1,6 @@
 <script>
 import { routes, Router } from '../../src'
 import NavItem from './components/NavItem.svelte'
-
 </script>
 
 <div class='nav'>
