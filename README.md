@@ -72,7 +72,7 @@ Each nested level consumes a `Router`. Once all `Router` are consumed, the rest 
 <Router/> <!-- same -->
 ```
 
-You can also omit `$$component`.
+If `$$component` in the parent is omitted:
 ```javascript
 // schema
 {
