@@ -1,5 +1,0 @@
-export { default } from './components/Router.svelte'
-export { default as Router } from './components/Router.svelte'
-export { routes } from './utils/routes'
-export { active, params, matches } from './utils/match'
-export { pathname, query } from './utils/path'
