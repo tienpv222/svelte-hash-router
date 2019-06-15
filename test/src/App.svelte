@@ -1,12 +1,9 @@
 <script>
 import { routes, Router } from '../../src'
-import NavItem from './components/NavItem.svelte'
+import Navigator from './components/Navigator.svelte'
 </script>
 
-<div class='nav'>
-  <NavItem route='{[$routes[`/`]]}'/>
-  <NavItem route='{$routes[`/`]}' deep={true}/>
-</div>
+<Navigator route='{$routes[`/`]}'/>
 <div class='view'>
   <Router/>
 </div>
@@ -22,21 +19,12 @@ import NavItem from './components/NavItem.svelte'
 :global(body) {
   width: 100vw;
   height: 100vh;
-}
-
-.nav {
-  float: left;
-  height: 100%;
-  padding-top: 10px;
-  background: dimgray;
+  overflow: hidden;
 }
 
 .view {
   display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
   height: 100%;
-  background: lightpink;
+  border-left: 1px solid gray;
 }
 </style>

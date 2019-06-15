@@ -1,4 +1,4 @@
 <script>
 import Route from './Route.svelte'
 </script>
-<Route name='Route 2' {...$$props}/>
+<Route id='2' {...$$props}/>
