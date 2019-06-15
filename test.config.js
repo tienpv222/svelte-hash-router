@@ -22,7 +22,8 @@ export default {
     commonjs(),
     dev && browsersync({
       server: 'test/',
-      watch: true
+      watch: true,
+      ui: false
     })
   ]
 }
