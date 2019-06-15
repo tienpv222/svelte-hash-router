@@ -1,0 +1,10 @@
+/*
+
+!*.config.js
+
+!docs
+!cypress
+!src
+!test
+
+bundle*

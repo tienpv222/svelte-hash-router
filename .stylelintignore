@@ -1,0 +1,11 @@
+*.*
+
+!*.svelte
+
+/*
+
+!docs
+!src
+!test
+
+bundle*
