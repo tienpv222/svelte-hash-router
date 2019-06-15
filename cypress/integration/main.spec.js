@@ -65,6 +65,25 @@ it('wildcard', () => {
   checkRoutes(arr, 3)
 })
 
+it('optional', () => {
+  let arr = [1, 2, 3]
+
+  cy.visit('#/optional')
+  checkRoutes(arr)
+
+  cy.visit('#/optional/route')
+  checkRoutes(arr, 1)
+
+  cy.visit('#/optional/route1')
+  checkRoutes(arr, 1)
+
+  cy.visit('#/optional/route2')
+  checkRoutes(arr, 2)
+
+  cy.visit('#/optional/route-whatever')
+  checkRoutes(arr, 3)
+})
+
 it('params', () => {
   let arr = [1, 2, 3]
   let checkProp = (id, name, wildcard) => {
