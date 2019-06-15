@@ -1,26 +1,22 @@
 <script>
 import { matches, active } from '../../../src'
-export let route = {}
-export let root = true
+export let route = []
 export let deep = false
 export let pad = 0
 
-$: routes = typeof route === 'object' ? Object.values(route) : route
+$: routes = Array.isArray(route) ? route : Object.values(route)
 $: style = `padding-left:${++pad * 20}px`
 </script>
 
-{#each routes as r}
+{#each routes as e}
   <a
-    class:active={r === $active} 
-    href={r.$$href}
+    class:active={e === $active} 
+    href={e.$$href}
     {style}
-    > {r.$$name || r.$$pathname}
+    > {e.$$pathname}
   </a>
-  {#if !root || deep && $matches.includes(r)}
-    <svelte:self route={r} root={false} {deep} {pad}/>
-    {#if root}
-      <div class='divider'></div>
-    {/if}
+  {#if deep}
+    <svelte:self route={e} root={false} {deep} {pad}/>
   {/if}
 {/each}
 {#if !deep}

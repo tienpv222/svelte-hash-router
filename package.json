@@ -13,6 +13,9 @@
   "author": "pynnl",
   "main": "src/index.js",
   "scripts": {
+    "test:dev": "npm run test:build -- -w",
+    "test:build": "rollup -c test.config.js",
+    "cy": "cypress open",
     "build": "rollup -c",
     "dev": "npm run dev:rollup",
     "dev:rollup": "rollup -w -c"
@@ -21,6 +24,7 @@
     "url-pattern": "^1.0.3"
   },
   "devDependencies": {
+    "cypress": "^3.3.1",
     "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.17.3",
@@ -37,7 +41,8 @@
     "rollup-plugin-svelte": "^5.1.0",
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-order": "^3.0.0"
+    "stylelint-order": "^3.0.0",
+    "svelte": "^3.5.1"
   },
   "peerDependencies": {
     "svelte": "^3.5.1"

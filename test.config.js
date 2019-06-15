@@ -3,6 +3,8 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import browsersync from 'rollup-plugin-browsersync'
 
+let dev = process.env.ROLLUP_WATCH
+
 export default {
   input: 'test/src/index.js',
   output: {
@@ -13,15 +15,14 @@ export default {
   },
   plugins: [
     svelte({
-      dev: true,
+      dev,
       css: css => css.write('test/bundle.css')
     }),
     nodeResolve(),
     commonjs(),
-    browsersync({
-      server: 'docs',
-      watch: true,
-      ignore: ['docs/src']
+    dev && browsersync({
+      server: 'test',
+      watch: true
     })
   ]
 }
