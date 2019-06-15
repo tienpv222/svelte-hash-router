@@ -15,5 +15,3 @@ cache:
     - ~/.cache
 install:
   - npm ci
-script:
-  - $(npm bin)/cypress run --spec 'cypress/intergration/main.spec.js'
