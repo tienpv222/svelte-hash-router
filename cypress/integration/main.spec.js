@@ -93,4 +93,3 @@ it('params', () => {
   checkProp(undefined, undefined, '/123')
   checkRoutes(arr, 4)
 })
-// })

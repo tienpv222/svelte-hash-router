@@ -6,7 +6,8 @@
     "hash",
     "router",
     "spa",
-    "svelte"
+    "svelte",
+    "svelte3"
   ],
   "repository": "github:pynnl/svelte-hash-router",
   "license": "MIT",
