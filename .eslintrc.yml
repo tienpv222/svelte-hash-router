@@ -10,6 +10,7 @@ parserOptions:
   sourceType: module
 plugins:
   - svelte3
+  - cypress
 rules:
   curly: [error, multi-or-nest, consistent]
   no-return-assign: off
