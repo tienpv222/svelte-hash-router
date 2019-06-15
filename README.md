@@ -1,14 +1,13 @@
-# WIP
 # svelte-hash-router
-Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
+Svelte 3 router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
 
 ## Install
 ```
-npm i -D svelte-hash-router
+npm i -D svelte-hash-router@latest
 ```
 
 ## Usage
-First, set up `routes` schema before the root component.
+First, set the `routes` schema before the root component.
 ```javascript
 // index.js
 import { routes } from 'svelte-hash-router'
@@ -34,6 +33,63 @@ import { Router } from 'svelte-hash-router'
 <Router/>
 ```
 
+### Nested routes
+```javascript
+// schema
+{
+  '/': {
+    $$component: MainLayout,
+    'home': Home,
+    'networking': {
+      $$component: Layout,
+      '/github': Github,
+      '/facebook': Facebook
+    }
+  },
+  '*': NotFound
+}
+```
+
+Then just simply use `Router` for each levels. The parent components won't be re-rendered when switching between children routes.
+```svelte
+<!-- MainLayout.svelte -->
+<div id='header'></div>
+
+<Router/> <!-- will match '/home' and '/networking' -->
+<div id='footer'></div>
+
+<!-- Layout.svelte -->
+<p>A social networking</p>
+<Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
+```
+
+Each nested level consumes a `Router`. Once all `Router` are consumed, the rest will have no effect.
+```svelte
+<!-- Layout.svelte -->
+<p>A social networking</p>
+<Router/> <!-- this will be rendered when the route is active -->
+<Router/> <!-- this will not -->
+<Router/> <!-- same -->
+```
+
+If `$$component` in the parent is omitted:
+```javascript
+// schema
+{
+  '/': {
+    'home': Home,
+    'about': About
+  }
+}
+
+// will act the same as
+{
+  '/home': Home,
+  '/about': About
+}
+```
+`/` in the first schema will consume the same amount of `Router` as the second one. The difference is in the first schema, it is an individual route, has its own data and can be looped for children routes when needed. See [`routes`](#the-routes-store).
+
 ## Schema
 Root paths must start with a `/` or if using wildcard, `*`.
 ```javascript
@@ -47,19 +103,14 @@ route.set({
 export default new Router({ target: document.body })
 ```
 
-The component can be omitted, but the route won't be rendered.
-```javascript
-{ '/this-route-will-not-be-rendered': null }
-```
-
-An object of options can be passed. All properties starting with `$$` will be treated as data, the rest will be seen as nested routes. All data are none-enumerable.
+An object of options can be passed. All properties starting with `$$` will be treated as options, the rest will be seen as nested routes. All options are saved as none-enumerable. `$$component` is a reserved option.
 ```javascript
 {
   '/home': Home,
   '/about': {
     $$component: About,
     $$name: 'About me',
-    $$customData: '',
+    $$customOption: '',
     '/biography': Biography,
     '/hobbies': Hobbies 
   }
@@ -67,7 +118,7 @@ An object of options can be passed. All properties starting with `$$` will be tr
 ```
 
 ### Params
-Get params of current route with the params store.
+Get params of current active route with the params store.
 ```javascript
 // schema
 {
@@ -98,7 +149,7 @@ $query.title === 'Dreams'
 ```
 
 ### Wildcard
-__*The order of schema does matter*__. The route matching first will be rendered. Wildcard `*` matches anything, so it is usually at the end. Wilcard is collected in `params` as `_`.
+__*The order of schema does matter*__. Whichever route matching first will be rendered. Wildcard `*` matches anything, so it is usually put at the end. Wilcard is collected in `params` as `_`.
 ```javascript
 // schema
 { '/book/*': null }
@@ -108,59 +159,10 @@ $params._ === '123' // not catch query
 ```
 
 ### url-pattern
-This library uses [url-pattern](https://github.com/snd/url-pattern), check it out for more syntaxes.
-
-## Nested routes
-```javascript
-// schema
-{
-  '/': {
-    $$component: MainLayout,
-    'home': Home,
-    'networking': {
-      $$component: Layout,
-      '/github': Github,
-      '/facebook': Facebook
-    }
-  },
-  '*': NotFound
-}
-```
-
-```svelte
-<!-- MainLayout.svelte -->
-<div id='header'></div>
-<Router/>
-<div id='footer'></div>
-
-<!-- Layout.svelte -->
-<p>A social networking</p>
-<Router/>
-```
-
-Omitted component:
-```javascript
-// schema
-{
-  '/': {
-    'home': Home,
-    'about': About
-  }
-}
-
-// will act the same as
-{
-  '/home': Home,
-  '/about': About
-}
-
-// except that '/' in the first schema is
-// an individual route, have its own data
-// and can be looped
-```
+This library uses the nice package [url-pattern](https://github.com/snd/url-pattern), check it out for more syntaxes.
 
 ## Redirect
-The redirect path must be an asbolute path
+Redirect routes by using a string instead of a Svelte component, or if passing options object, use `$$redirect`. The redirect path must be an asbolute path.
 ```javascript
 {
   '/home': Home,
@@ -176,17 +178,16 @@ The redirect path must be an asbolute path
 ```
 
 ## The `routes` store
-After the first schema setup, `routes` becomes readonly. The following __*non-enumarable*__ properties are added:
+After the first schema setup, `routes` becomes readonly. The following reserved properties are added for each route:
 
 - `$$pathname` the exact path as in schema define
 - `$$href` full path including `#` at the beginning
 - `$$stringify` generate string from params. Check out [url-pattern stringify](https://github.com/snd/url-pattern#stringify-patterns)
 - `$$pattern` url-pattern object
 
-They will override any custom data with the same names.
-
-Example of use:
+Since they are __*non-enumarable*__, you can easily loop for just nested routes when needed.
 ```svelte
+<!-- Navigator.svelte -->
 <script>
 import { routes, active } from 'svelte-hash-router'
 
@@ -206,14 +207,21 @@ $: links = Object.values($routes['/books']['/comedy'])
 </style>
 ```
 
-`active` stores the current active route. To include the parents of active route as well, use `matches`.
+The store `active` is current active route. If you use nested routes and want to check if a parent route has an active child route, use the store `matches`. It is an array including all the parents of the active route and itself.
 ```svelte
+<script>
+import { matches } from 'svelte-hash-router'
+</script>
+
 <a class:active={$matches.includes(route)}></a>
 ```
 
 A route containing params can be stringified.
 ```svelte
+<!-- schema: '/book/:id/:name' -->
 <a href='{route.$$stringify({id: 123, name: `Dreams`})}'>
+
+<!-- will give: '/book/123/Dreams' -->
 ```
 
 ## LICENSE
