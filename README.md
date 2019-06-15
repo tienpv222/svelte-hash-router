@@ -1,5 +1,9 @@
-# WIP
 # svelte-hash-router
+[![npm](https://img.shields.io/npm/v/svelte-hash-router.svg)](https://www.npmjs.com/package/svelte-hash-router)
+[![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
+[![GitHub license](https://img.shields.io/github/license/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router/blob/master/LICENSE)
+[![Dependencies Status](https://david-dm.org/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router)
+
 Svelte 3 router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
 
 ## Install
