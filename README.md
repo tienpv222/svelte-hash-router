@@ -1,3 +1,4 @@
+# WIP
 # svelte-hash-router
 Svelte 3 router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
 
