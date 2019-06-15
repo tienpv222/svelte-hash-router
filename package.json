@@ -12,14 +12,17 @@
   "repository": "github:pynnl/svelte-hash-router",
   "license": "MIT",
   "author": "pynnl",
+  "files": [
+    "src"
+  ],
   "main": "src/index.js",
   "scripts": {
     "test": "run-s test:build test:start",
     "test:build": "rollup -c test.config.js",
+    "test:cy": "cypress run --spec cypress/integration/main.spec.js",
     "test:dev": "npm run test:build -- -w",
-    "test:start": "server-test test:server 3000 test:cy",
-    "test:server": "browser-sync test --no-open",
-    "test:cy": "cypress run --spec cypress/integration/main.spec.js"
+    "test:server": "browser-sync test --no-ui --no-open",
+    "test:start": "server-test test:server 3000 test:cy"
   },
   "dependencies": {
     "url-pattern": "^1.0.3"
