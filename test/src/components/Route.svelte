@@ -15,6 +15,5 @@ export let deep = false
 .route > *:first-child {
   margin: 10px 20px;
   font-size: 20px;
-  text-align: center;
 }
 </style>

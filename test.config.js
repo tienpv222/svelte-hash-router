@@ -21,7 +21,7 @@ export default {
     nodeResolve(),
     commonjs(),
     dev && browsersync({
-      server: 'test',
+      server: 'test/',
       watch: true
     })
   ]

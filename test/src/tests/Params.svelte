@@ -1,36 +1,22 @@
 <script context='module'>
-export let paramsRoutes = {
-  '/id/John': '',
-  '/:id/John': '',
-  '/:id/:name': '',
-  '*': ''
+import Router, { params } from '../../../src'
+import Route1 from '../components/Route1.svelte'
+import Route2 from '../components/Route2.svelte'
+import Route3 from '../components/Route3.svelte'
+import Route4 from '../components/Route4.svelte'
+import Property from '../components/Property.svelte'
+
+export let schema = {
+  '/id/name': Route1,
+  '/:id/name': Route2,
+  '/:id/:name': Route3,
+  '*': Route4
 }
-</script>
-
-<script>
-import { params } from '../../../src'
-import Link from '../components/Link.svelte'
-
-let to = [
-  '/id/John',
-  '/123/John',
-  '/123/Ryan',
-  '/whatever'
-]
 </script>
 
 <div>
-  {#each to as e}
-    <Link href='{`#/params` + e}' label={e}/>
+  {#each Object.entries($params) as e}
+    <Property key={e[0]} value={e[1]}/>
   {/each}
+  <Router/>
 </div>
-<pre>
-  {JSON.stringify($params, null, 2)}
-</pre>
-
-<style>
-pre {
-  margin: 10px;
-  font-size: 20px;
-}
-</style>

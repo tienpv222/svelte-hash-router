@@ -1,29 +1,16 @@
 <script context='module'>
+import Router, { routes } from '../../../src'
 import Route1 from '../components/Route1.svelte'
-import RouteAny from '../components/RouteAny.svelte'
-import CatchAll from '../components/CatchAll.svelte'
+import Route2 from '../components/Route2.svelte'
+import Route3 from '../components/Route3.svelte'
+import Navigator from '../components/Navigator.svelte'
 
-export let wildcardRoutes = {
+export let schema = {
   '/route1': Route1,
-  '/route*': RouteAny,
-  '*': CatchAll
+  '/route*': Route2,
+  '*': Route3
 }
 </script>
 
-<script>
-import { Router } from '../../../src'
-import Link from '../components/Link.svelte'
-
-let to = [
-  '/route1',
-  '/route-unknown',
-  '/whatever'
-]
-</script>
-
-<div>
-  {#each to as e}
-    <Link href='{`#/wildcard` + e}' label={e}/>
-  {/each}
-  <Router/>
-</div>
+<Navigator route='{$routes[`/`][`wildcard`]}'/>
+<Router/>
