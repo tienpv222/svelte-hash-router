@@ -14,12 +14,12 @@
   "author": "pynnl",
   "main": "src/index.js",
   "scripts": {
-    "test:dev": "npm run test:build -- -w",
+    "test": "run-s test:build test:start",
     "test:build": "rollup -c test.config.js",
-    "cy": "cypress open",
-    "build": "rollup -c",
-    "dev": "npm run dev:rollup",
-    "dev:rollup": "rollup -w -c"
+    "test:dev": "npm run test:build -- -w",
+    "test:start": "server-test test:server 3000 test:cy",
+    "test:server": "browser-sync test --no-open",
+    "test:cy": "cypress run --spec cypress/integration/main.spec.js"
   },
   "dependencies": {
     "url-pattern": "^1.0.3"
@@ -41,6 +41,7 @@
     "rollup-plugin-copy": "^3.0.0",
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-svelte": "^5.1.0",
+    "start-server-and-test": "^1.9.1",
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-order": "^3.0.0",
