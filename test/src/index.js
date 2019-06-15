@@ -1,4 +1,4 @@
-import { routes, Router } from '../../src'
+import {routes, Router } from '../../src'
 import App from './App.svelte'
 import RootRoutes, { schema as _RootRoutes } from './tests/RootRoutes.svelte'
 import NestedRoutes, { schema as _NestedRoutes } from './tests/NestedRoutes.svelte'

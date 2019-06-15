@@ -1,3 +1,4 @@
-docs
-test/*
-!test/src
+*
+# docs
+# test/*
+# !test/src

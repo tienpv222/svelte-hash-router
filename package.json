@@ -17,12 +17,15 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "test": "run-s test:build test:start",
-    "test:build": "rollup -c test.config.js",
-    "test:cy": "cypress run --spec cypress/integration/main.spec.js",
+    "lint": "run-s lint:es lint:style",
+    "lint:es": "eslint .",
+    "lint:style": "stylelint **/*.svelte",
+    "test": "run-s lint test:build test:start",
     "test:dev": "npm run test:build -- -w",
+    "test:build": "rollup -c test.config.js",
     "test:server": "browser-sync test --no-ui --no-open",
-    "test:start": "server-test test:server 3000 test:cy"
+    "test:start": "server-test test:server 3000 test:cy",
+    "test:cy": "cypress run --spec cypress/integration/main.spec.js"
   },
   "dependencies": {
     "url-pattern": "^1.0.3"
