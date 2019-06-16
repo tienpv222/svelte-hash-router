@@ -32,7 +32,7 @@ Then use `Router` inside your components.
 ```svelte
 <!-- App.svelte -->
 <script>
-import { Router } from 'svelte-hash-router'
+import Router from 'svelte-hash-router'
 </script>
 
 <Router/>
