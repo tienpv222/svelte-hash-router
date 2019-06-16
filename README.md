@@ -61,7 +61,7 @@ export default new Router({ target: document.body })
 }
 ```
 
-Then just simply use `Router` in each levels.
+Then just simply use `Router` in each level.
 ```svelte
 <!-- MainLayout.svelte -->
 <div id='header'></div>
@@ -101,7 +101,7 @@ If `$$component` in the parent is omitted:
   '/about': About
 }
 ```
-`/` in the first schema will consume the same amount of `Router` as the second one. The difference is in the first schema, it is an individual route, has its own data and can be looped for children routes when needed. See [`routes`](#the-routes-store).
+Except that in the first schema, `/` is an individual route, has its own data and can be looped for children routes when needed. See [`routes`](#the-routes-store).
 
 ## Schema
 Root paths must start with a `/` or if using wildcard, `*`.
