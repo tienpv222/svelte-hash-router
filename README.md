@@ -8,7 +8,7 @@ Svelte 3 hash based router. Inspired from [svelte-spa-router](https://github.com
 
 ## Install
 ```
-npm i -D svelte-hash-router@latest
+npm i -D svelte-hash-router
 ```
 
 ## Usage
