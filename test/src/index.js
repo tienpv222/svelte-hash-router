@@ -10,6 +10,7 @@ import Params, { schema as _Params } from './tests/Params.svelte'
 import Query from './tests/Query.svelte'
 import Active, { schema as _Active } from './tests/Active.svelte'
 import Matches, { schema as _Matches } from './tests/Matches.svelte'
+import Stringify, { schema as _Stringify } from './tests/Stringify.svelte'
 
 routes.set({
   '/': {
@@ -23,7 +24,8 @@ routes.set({
     'params': { $$component: Params, ..._Params },
     'query': Query,
     'active': { $$component: Active, ..._Active },
-    'matches': { $$component: Matches, ..._Matches }
+    'matches': { $$component: Matches, ..._Matches },
+    'stringify': { $$component: Stringify, ..._Stringify }
   }
 })
 
