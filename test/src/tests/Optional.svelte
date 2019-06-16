@@ -12,5 +12,5 @@ export let schema = {
 }
 </script>
 
-<Navigator route='{$routes[`/`][`wildcard`]}'/>
+<Navigator route='{$routes[`/`][`optional`]}'/>
 <Router/>

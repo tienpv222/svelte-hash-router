@@ -84,6 +84,22 @@ it('optional', () => {
   checkRoutes(arr, 3)
 })
 
+it('redirect', () => {
+  let arr = [1, 2, 3]
+
+  cy.visit('#/redirect')
+  checkRoutes(arr)
+
+  cy.visit('#/redirect/route4')
+  checkRoutes(arr, 1)
+
+  cy.visit('#/redirect/route5')
+  checkRoutes(arr, 2)
+
+  cy.visit('#/redirect-whatever')
+  checkRoutes(arr, 3)
+})
+
 it('params', () => {
   let arr = [1, 2, 3]
   let checkProp = (id, name, wildcard) => {
@@ -109,6 +125,46 @@ it('params', () => {
   checkRoutes(arr, 3)
 
   cy.visit('#/params/123')
-  checkProp(undefined, undefined, '/123')
+  checkProp(null, null, '/123')
   checkRoutes(arr, 4)
+})
+
+it('query', () => {
+  let checkProp = (id, name) => {
+    checkProperty('id', id)
+    checkProperty('name', name)
+    checkProperty('whatever')
+  }
+
+  cy.visit('#/query?')
+  checkProp()
+
+  cy.visit('#/query?id=1')
+  checkProp(1)
+
+  cy.visit('#/query?name=John')
+  checkProp(null, 'John')
+
+  cy.visit('#/query?id=1&name=John')
+  checkProp(1, 'John')
+})
+
+it('active', () => {
+  let arr = [1, 2, 3]
+
+  cy.visit('#/active')
+  checkProperty('href', '#/active')
+  checkRoutes(arr)
+
+  cy.visit('#/active/route1')
+  checkProperty('href', '#/active/route1')
+  checkRoutes(arr, 1)
+
+  cy.visit('#/active/route2')
+  checkProperty('href', '#/active/route2')
+  checkRoutes(arr, 2)
+
+  cy.visit('#/active/route2/route3')
+  checkProperty('href', '#/active/route2/route3')
+  checkRoutes(arr, 2, 3)
 })
