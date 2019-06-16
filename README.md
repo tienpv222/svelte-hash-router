@@ -229,6 +229,6 @@ A route containing params can be stringified.
 <!-- will give: '/book/123/Dreams' -->
 ```
 
-## [CHANGELOG](CHANGELOG.md)
+### [CHANGELOG](CHANGELOG.md)
 
-## [LICENSE: MIT](LICENSE.md)
+### [LICENSE: MIT](LICENSE.md)
