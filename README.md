@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router/blob/master/LICENSE)
 [![Dependencies Status](https://david-dm.org/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router)
 
-Svelte 3 hash based router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
+Simple Svelte 3 hash based router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
 
 ## Install
 ```
@@ -28,7 +28,7 @@ routes.set({
 export default new App({ target: document.body })
 ```
 
-Then use `Router` inside your components.
+Then use `Router` inside.
 ```svelte
 <!-- App.svelte -->
 <script>
@@ -55,7 +55,7 @@ import Router from 'svelte-hash-router'
 }
 ```
 
-Then just simply use `Router` for each levels. The parent components won't be re-rendered when switching between children routes.
+Then just simply use `Router` for each levels.
 ```svelte
 <!-- MainLayout.svelte -->
 <div id='header'></div>
