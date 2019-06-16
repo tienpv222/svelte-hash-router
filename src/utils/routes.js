@@ -41,7 +41,7 @@ function parse (schema = {}, notRoot, pathname, href = '#') {
     defineProp(route, '$$stringify', v => route.$$pattern.stringify(v))
   }
 
-  return route
+  return Object.freeze(route)
 }
 
 // Routes store must be set before creating any Svelte components.
