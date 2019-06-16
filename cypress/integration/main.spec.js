@@ -218,3 +218,10 @@ it('stringify', () => {
   cy.get('button:contains(789)').click()
   cy.get('.property').should('contain', 'Rose')
 })
+
+it('freeze-routes', () => {
+  cy.visit('#/freeze-routes')
+
+  cy.get('.catch').should('contain', 'TypeError')
+  cy.get('.pathname').should('contain', 'freeze-routes')
+})
