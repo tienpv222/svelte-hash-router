@@ -38,6 +38,12 @@ import Router from 'svelte-hash-router'
 <Router/>
 ```
 
+Or more simple:
+```javascript
+// index.js
+export default new Router({ target: document.body })
+```
+
 ### Nested routes
 ```javascript
 // schema
