@@ -61,14 +61,16 @@ export default new Router({ target: document.body })
 }
 ```
 
-Then just simply use `Router` for each levels.
+Then just simply use `Router` in each levels.
 ```svelte
 <!-- MainLayout.svelte -->
 <div id='header'></div>
 
 <Router/> <!-- will match '/home' and '/networking' -->
 <div id='footer'></div>
+```
 
+```svelte
 <!-- Layout.svelte -->
 <p>A social networking</p>
 <Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
@@ -218,7 +220,7 @@ $: links = Object.values($routes['/books']['/comedy'])
 </style>
 ```
 
-The store `active` is current active route. If you use nested routes and want to check if a parent route has an active child route, use the store `matches`. It is an array including all the parents of the active route and itself.
+The store `active` is the current active route. If you want to check if a parent route has an active child route, use the store `matches`. It is an array including all the parents of the active route and itself.
 ```svelte
 <script>
 import { matches } from 'svelte-hash-router'
