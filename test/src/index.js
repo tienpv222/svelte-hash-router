@@ -2,6 +2,7 @@ import { routes, Router } from '../../src'
 import App from './App.svelte'
 import RootRoutes, { schema as _RootRoutes } from './tests/RootRoutes.svelte'
 import NestedRoutes, { schema as _NestedRoutes } from './tests/NestedRoutes.svelte'
+import WithoutComponent, { schema as _WithoutComponent } from './tests/WithoutComponent.svelte'
 import Wildcard, { schema as _Wildcard } from './tests/Wildcard.svelte'
 import Optional, { schema as _Optional } from './tests/Optional.svelte'
 import Redirect, { schema as _Redirect } from './tests/Redirect.svelte'
@@ -15,6 +16,7 @@ routes.set({
     $$component: App,
     'root-routes': { $$component: RootRoutes, ..._RootRoutes },
     'nested-routes': { $$component: NestedRoutes, ..._NestedRoutes },
+    'without-component': { $$component: WithoutComponent, ..._WithoutComponent },
     'wildcard': { $$component: Wildcard, ..._Wildcard },
     'optional': { $$component: Optional, ..._Optional },
     'redirect': { $$component: Redirect, ..._Redirect },

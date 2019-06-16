@@ -53,6 +53,22 @@ it('nested-routes', () => {
   checkRoutes(arr, 4, 5, 6)
 })
 
+it('without-component', () => {
+  let arr = [1, 2, 3]
+
+  cy.visit('#/without-component')
+  checkRoutes(arr)
+
+  cy.contains('/route1').click()
+  checkRoutes(arr)
+
+  cy.contains('/route2').click()
+  checkRoutes(arr, 2)
+
+  cy.contains('/route3').click()
+  checkRoutes(arr, 3)
+})
+
 it('wildcard', () => {
   let arr = [1, 2, 3]
 
