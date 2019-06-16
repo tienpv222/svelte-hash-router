@@ -4,7 +4,7 @@
 [![GitHub license](https://img.shields.io/github/license/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router/blob/master/LICENSE)
 [![Dependencies Status](https://david-dm.org/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router)
 
-Svelte 3 router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
+Svelte 3 hash based router. Inspired from [svelte-spa-router](https://github.com/ItalyPaleAle/svelte-spa-router), but with global routes.
 
 ## Install
 ```
