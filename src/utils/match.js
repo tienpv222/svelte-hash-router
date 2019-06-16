@@ -3,19 +3,10 @@ import { derived } from 'svelte/store'
 import { routes } from './routes'
 import { pathname } from './path'
 
-function map (routes, matches = []) {
-  return Object.values(routes).reverse().map(e => [e, matches])
-}
-
 // Search for matching route
-function parse (routes, pathname) {
-  let stack = map(routes)
-
-  while (stack.length) {
-    let [active, matches] = stack.pop()
+function parse (active, pathname, notRoot, matches = []) {
+  if (notRoot) {
     let params = active.$$pattern.match(pathname)
-    matches = [...matches, active]
-
     if (params) {
       return !active.$$redirect
         ? { active, params, matches }
@@ -25,8 +16,11 @@ function parse (routes, pathname) {
           window.dispatchEvent(new Event('hashchange'))
         })
     }
+  }
 
-    stack = stack.concat(map(active, matches))
+  for (let e of Object.values(active)) {
+    let result = parse(e, pathname, true, [...matches, e])
+    if (result) return result
   }
 }
 

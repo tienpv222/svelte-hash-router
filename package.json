@@ -22,7 +22,7 @@
     "lint:style": "stylelint .",
     "test": "run-s lint test:build test:start",
     "test:dev": "npm run test:build -- -w",
-    "test:build": "rollup -c test.config.js",
+    "test:build": "rollup -c",
     "test:server": "browser-sync test --no-ui --no-open",
     "test:start": "server-test test:server 3000 test:cy",
     "test:cy": "cypress run --spec cypress/integration/main.spec.js"

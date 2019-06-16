@@ -15,8 +15,7 @@ function parse (schema = {}, notRoot, pathname, href = '#') {
     let type = typeof schema
     schema = type === 'function' ? { $$component: schema }
       : type === 'string' ? { $$redirect: schema }
-      : type !== 'object' ? {}
-      : schema === null ? {} : schema
+      : (type !== 'object' || schema === null) ? {} : schema
 
     let c = schema.$$component
     if (typeof c !== 'function' && c !== undefined && c !== null)

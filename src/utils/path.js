@@ -17,6 +17,9 @@ let path = readable(parse(), set => {
 
 let pathname = derived(path, $ => $.pathname) // current pathname without query
 let querystring = derived(path, $ => $.querystring)
-let query = derived(querystring, $ => Object.fromEntries(new URLSearchParams($)))
+let query = derived(querystring, $ => {
+  return Array.from(new URLSearchParams($))
+    .reduce((a, [i, e]) => { a[i] = e; return a }, {})
+})
 
 export { pathname, query }

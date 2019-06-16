@@ -205,3 +205,16 @@ it('matches', () => {
   cy.visit('#/matches/route2/route3')
   checkProp(arr, '/', 'matches', '/route2', '/route3')
 })
+
+it('stringify', () => {
+  cy.visit('#/stringify')
+
+  cy.get('button:contains(123)').click()
+  cy.get('.property').should('contain', 'John')
+
+  cy.get('button:contains(456)').click()
+  cy.get('.property').should('contain', 'Anne')
+
+  cy.get('button:contains(789)').click()
+  cy.get('.property').should('contain', 'Rose')
+})
