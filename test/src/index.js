@@ -8,6 +8,7 @@ import Redirect, { schema as _Redirect } from './tests/Redirect.svelte'
 import Params, { schema as _Params } from './tests/Params.svelte'
 import Query from './tests/Query.svelte'
 import Active, { schema as _Active } from './tests/Active.svelte'
+import Matches, { schema as _Matches } from './tests/Matches.svelte'
 
 routes.set({
   '/': {
@@ -19,7 +20,8 @@ routes.set({
     'redirect': { $$component: Redirect, ..._Redirect },
     'params': { $$component: Params, ..._Params },
     'query': Query,
-    'active': { $$component: Active, ..._Active }
+    'active': { $$component: Active, ..._Active },
+    'matches': { $$component: Matches, ..._Matches }
   }
 })
 

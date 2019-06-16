@@ -1,5 +1,5 @@
 <script context='module'>
-import Router, { routes, active } from '../../../src'
+import { routes, matches } from '../../../src'
 import Route1 from '../components/Route1.svelte'
 import Route2 from '../components/Route2.svelte'
 import Route3 from '../components/Route3.svelte'
@@ -15,8 +15,9 @@ export let schema = {
 }
 </script>
 
-<Navigator route='{$routes[`/`][`active`]}' deep={true} exact={true}/>
+<Navigator route='{$routes[`/`][`matches`]}' deep={true} exact={true}/>
 <div>
-  <Property key='href' value={$active.$$href}/>
-  <Router deep={true}/>
+  {#each $matches as e}
+    <Property value={e.$$pathname}/>
+  {/each}
 </div>

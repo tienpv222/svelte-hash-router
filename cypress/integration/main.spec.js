@@ -1,9 +1,13 @@
-function checkRoutes (arr, ...args) {
+function checkVisible (name, arr, ...args) {
   for (let e of args)
-    cy.get(`.route:contains(${e})`).should('be.visible')
+    cy.get(`.${name}:contains(${e})`).should('be.visible')
 
   for (let e of arr.filter(e => !args.includes(e)))
-    cy.get(`.route:contains(${e})`).should('not.be.visible')
+    cy.get(`.${name}:contains(${e})`).should('not.be.visible')
+}
+
+function checkRoutes () {
+  checkVisible('route', ...arguments)
 }
 
 function checkProperty (key, value) {
@@ -167,4 +171,21 @@ it('active', () => {
   cy.visit('#/active/route2/route3')
   checkProperty('href', '#/active/route2/route3')
   checkRoutes(arr, 2, 3)
+})
+
+it('matches', () => {
+  let checkProp = (...args) => checkVisible('property', ...args)
+  let arr = ['/', 'matches', '/route1', '/route2', '/route3']
+
+  cy.visit('#/matches')
+  checkProp(arr, '/', 'matches')
+
+  cy.visit('#/matches/route1')
+  checkProp(arr, '/', 'matches', '/route1')
+
+  cy.visit('#/matches/route2')
+  checkProp(arr, '/', 'matches', '/route2')
+
+  cy.visit('#/matches/route2/route3')
+  checkProp(arr, '/', 'matches', '/route2', '/route3')
 })
