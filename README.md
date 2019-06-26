@@ -108,7 +108,7 @@ Root paths must start with a `/` or if using wildcard, `*`.
 ```javascript
 import { routes, Router } from 'svelte-hash-router'
 
-route.set({
+routes.set({
   '/home': Home,
   '*': NotFound
 })
