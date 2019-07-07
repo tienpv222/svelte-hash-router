@@ -1,4 +1,5 @@
 # svelte-hash-router
+[![svelte](https://img.shields.io/badge/svelte-v3-blueviolet.svg)](https://github.com/sveltejs/svelte)
 [![npm](https://img.shields.io/npm/v/svelte-hash-router.svg)](https://www.npmjs.com/package/svelte-hash-router)
 [![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
 [![GitHub license](https://img.shields.io/github/license/pynnl/svelte-hash-router.svg)](https://github.com/pynnl/svelte-hash-router/blob/master/LICENSE)
