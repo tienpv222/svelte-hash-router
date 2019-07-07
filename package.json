@@ -51,9 +51,9 @@
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-order": "^3.0.0",
-    "svelte": "^3.6.3"
+    "svelte": "^3.6.5"
   },
   "peerDependencies": {
-    "svelte": "^3.6.1"
+    "svelte": "^3.6.5"
   }
 }
