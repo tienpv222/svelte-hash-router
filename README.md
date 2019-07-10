@@ -53,7 +53,7 @@ export default new Router({ target: document.body })
     $$component: MainLayout,
     'home': Home,
     'networking': {
-      $$component: Layout,
+      $$component: SubLayout,
       '/github': Github,
       '/facebook': Facebook
     }
@@ -62,7 +62,7 @@ export default new Router({ target: document.body })
 }
 ```
 
-Then just simply use `Router` in each level.
+Then just simply use `Router` for each level.
 ```svelte
 <!-- MainLayout.svelte -->
 <div id='header'></div>
