@@ -192,7 +192,7 @@ After the first schema setup, `routes` becomes readonly. The following reserved 
 
 - `$$pathname` the exact path as in schema define
 - `$$href` full path including `#` at the beginning
-- `$$stringify` generate string from params. Check out [url-pattern stringify](https://github.com/snd/url-pattern#stringify-patterns)
+- `$$stringify` a function to generate string from params. Check out [url-pattern stringify](https://github.com/snd/url-pattern#stringify-patterns)
 - `$$pattern` url-pattern object
 
 Since they are __*non-enumarable*__, you can easily loop for just nested routes when needed.
