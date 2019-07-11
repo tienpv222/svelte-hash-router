@@ -178,8 +178,12 @@ Redirect routes by using a string instead of a Svelte component, or if passing o
   '/home': Home,
   '/networking': {
     '/github': GithubComponent,
+    
+    // redirect using string syntax
     '*': '/networking/github'
   },
+  
+  // redirect using options object
   '*': {
     $$redirect: '/home'
   }
