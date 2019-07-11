@@ -72,18 +72,9 @@ Then just simply use `Router` for each level.
 ```
 
 ```svelte
-<!-- Layout.svelte -->
+<!-- SubLayout.svelte -->
 <p>A social networking</p>
 <Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
-```
-
-Each nested level consumes a `Router`. Once all `Router` are consumed, the rest will have no effect.
-```svelte
-<!-- Layout.svelte -->
-<p>A social networking</p>
-<Router/> <!-- this will be rendered when the route is active -->
-<Router/> <!-- this will not -->
-<Router/> <!-- same -->
 ```
 
 If `$$component` in the parent is omitted:
