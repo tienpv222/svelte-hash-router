@@ -67,14 +67,16 @@ Then just simply use `Router` for each level.
 <!-- MainLayout.svelte -->
 <div id='header'></div>
 
-<Router/> <!-- will match '/home' and '/networking' -->
+<Router/> <!-- match '/home' and '/networking' -->
+
 <div id='footer'></div>
 ```
 
 ```svelte
 <!-- SubLayout.svelte -->
 <p>A social networking</p>
-<Router/> <!-- will match '/networking/github' and '/networking/facebook' -->
+
+<Router/> <!-- match '/networking/github' and '/networking/facebook' -->
 ```
 
 If `$$component` in the parent is omitted:
