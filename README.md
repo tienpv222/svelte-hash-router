@@ -113,13 +113,13 @@ export default new Router({ target: document.body })
 An object of options can be passed. All properties starting with `$$` will be treated as options, the rest will be seen as nested routes. All options are saved as none-enumerable. `$$component` is a reserved option.
 ```javascript
 {
-  '/home': Home,
+  '/home': HomeComponent,
   '/about': {
-    $$component: About,
+    $$component: AboutComponent,
     $$name: 'About me',
     $$customOption: '',
-    '/biography': Biography,
-    '/hobbies': Hobbies 
+    '/biography': BiographyComponent,
+    '/hobbies': HobbiesComponent 
   }
 }
 ```
@@ -129,8 +129,8 @@ Get params of current active route with the params store.
 ```javascript
 // schema
 {
-  '/books/:id': null,
-  '/authors/:name/novels/:title': null
+  '/books/:id': BookComponent,
+  '/authors/:name/novels/:title': NovelComponent
 }
 
 // Svelte component
@@ -159,7 +159,7 @@ $query.title === 'Dreams'
 __*The order of schema does matter*__. Whichever route matching first will be rendered. Wildcard `*` matches anything, so it is usually put at the end. Wilcard is collected in `params` as `_`.
 ```javascript
 // schema
-{ '/book/*': null }
+{ '/book/*': BookComponent }
 
 // /book/123?title=Dreams
 $params._ === '123' // not catch query
@@ -174,7 +174,7 @@ Redirect routes by using a string instead of a Svelte component, or if passing o
 {
   '/home': Home,
   '/networking': {
-    '/github': Github,
+    '/github': GithubComponent,
     '*': '/networking/github'
   },
   '*': {
