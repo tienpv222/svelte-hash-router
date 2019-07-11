@@ -53,7 +53,7 @@ export default new Router({ target: document.body })
     $$component: MainLayout,
     'home': Home,
     'networking': {
-      $$component: SubLayout,
+      $$component: NetworkingLayout,
       '/github': Github,
       '/facebook': Facebook
     }
@@ -73,7 +73,7 @@ Then just simply use `Router` for each level.
 ```
 
 ```svelte
-<!-- SubLayout.svelte -->
+<!-- NetworkingLayout.svelte -->
 <p>A social networking</p>
 
 <Router/> <!-- match '/networking/github' and '/networking/facebook' -->
