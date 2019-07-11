@@ -115,9 +115,12 @@ An object of options can be passed. All properties starting with `$$` will be tr
 {
   '/home': HomeComponent,
   '/about': {
+    // options
     $$component: AboutComponent,
     $$name: 'About me',
-    $$customOption: '',
+    $$customOption: 'any',
+    
+    // nested routes
     '/biography': BiographyComponent,
     '/hobbies': HobbiesComponent 
   }
