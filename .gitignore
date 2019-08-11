@@ -15,6 +15,7 @@
 
 !*.config.js
 
+!.dependabot
 !docs
 !cypress
 !src
