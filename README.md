@@ -7,6 +7,8 @@
 
 Simple Svelte 3 hash based router with global routes.
 
+Demo: https://pynnl.github.io/svelte-hash-router
+
 ## Install
 ```
 npm i -D svelte-hash-router
