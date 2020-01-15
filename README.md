@@ -240,6 +240,11 @@ A route containing params can be stringified.
 <!-- will give: '/book/123/Dreams' -->
 ```
 
+Standard links to new pages should be preceded by a '#' symbol : 
+```svelte
+<a href='#/books'>
+```
+
 ### [CHANGELOG](CHANGELOG.md)
 
 ### [LICENSE: MIT](LICENSE.md)
