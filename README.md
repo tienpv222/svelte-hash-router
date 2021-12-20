@@ -7,7 +7,7 @@
 
 Simple Svelte 3 hash based router with global routes.
 
-Demo: https://pynnl.github.io/svelte-hash-router
+Demo: https://tienpv222.github.io/svelte-hash-router
 
 Demo REPL: https://svelte.dev/repl/47eaf2b35f4f4c98b533031f3b749c89?version=3.32.2
 
